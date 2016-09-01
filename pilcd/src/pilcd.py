@@ -13,9 +13,9 @@ class PiLcd(object):
         self.sclk = sclk
         self.sid = sid
         self.GPIO.setmode(GPIO.BCM)
-        self.GPIO.setup(self.pin.cs,GPIO.OUT)
-        self.GPIO.setup(self.pin.sclk,GPIO.OUT)
-        self.GPIO.setup(self.pin.sid,GPIO.OUT)
+        self.GPIO.setup(self.cs,GPIO.OUT)
+        self.GPIO.setup(self.sclk,GPIO.OUT)
+        self.GPIO.setup(self.sid,GPIO.OUT)
         
     
     def ledtest(self):
