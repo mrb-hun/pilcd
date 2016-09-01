@@ -12,23 +12,23 @@ class PiLcd(object):
         self.cs = cs
         self.sclk = sclk
         self.sid = sid
-        self.GPIO.setmode(GPIO.BCM)
-        self.GPIO.setup(self.cs,GPIO.OUT)
-        self.GPIO.setup(self.sclk,GPIO.OUT)
-        self.GPIO.setup(self.sid,GPIO.OUT)
+        self.GPIO.setmode(self.GPIO.BCM)
+        self.GPIO.setup(self.cs,self.GPIO.OUT)
+        self.GPIO.setup(self.sclk,self.GPIO.OUT)
+        self.GPIO.setup(self.sid,self.GPIO.OUT)
         
     
     def ledtest(self):
-        self.GPIO.output(self.cs,GPIO.HIGH)
+        self.GPIO.output(self.cs,self.GPIO.HIGH)
         sleep(3.e-7)
         sleep(0.2)
-        self.GPIO.output(self.cs,GPIO.LOW)
-        self.GPIO.output(self.sclk,GPIO.HIGH)
+        self.GPIO.output(self.cs,self.GPIO.LOW)
+        self.GPIO.output(self.sclk,self.GPIO.HIGH)
         sleep(0.2)
-        self.GPIO.output(self.sclk,GPIO.LOW)
-        self.GPIO.output(self.sdi,GPIO.HIGH)
+        self.GPIO.output(self.sclk,self.GPIO.LOW)
+        self.GPIO.output(self.sdi,self.GPIO.HIGH)
         sleep(0.2)
-        self.GPIO.output(self.sdi,GPIO.LOW)
+        self.GPIO.output(self.sdi,self.GPIO.LOW)
  
 if __name__ == "__main__":
     lcd = PiLcd()
