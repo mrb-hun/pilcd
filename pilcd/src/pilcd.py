@@ -4,7 +4,7 @@
 from time import sleep
 
 class PiLcd(object):
-    def __init__(self, cs=17, sclk=18, sid=27, GPIO=None):
+    def __init__(self, cs=18, sclk=17, sid=27, GPIO=None):
         if not GPIO:
             import RPi.GPIO as GPIO
             GPIO.setwarnings(False)
@@ -26,9 +26,9 @@ class PiLcd(object):
         self.GPIO.output(self.sclk,self.GPIO.HIGH)
         sleep(0.2)
         self.GPIO.output(self.sclk,self.GPIO.LOW)
-        self.GPIO.output(self.sdi,self.GPIO.HIGH)
+        self.GPIO.output(self.sid,self.GPIO.HIGH)
         sleep(0.2)
-        self.GPIO.output(self.sdi,self.GPIO.LOW)
+        self.GPIO.output(self.sid,self.GPIO.LOW)
  
 if __name__ == "__main__":
     lcd = PiLcd()
