@@ -27,5 +27,5 @@ class PiLcd(object):
  
 if __name__ == "__main__":
     lcd = PiLcd()
-    for _ in seq(10):
+    for _ in range(10):
         lcd.ledtest()
