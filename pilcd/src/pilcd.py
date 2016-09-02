@@ -27,6 +27,34 @@ class PiLcd(object):
             mask = mask >> 1
         print
             
+    def bout(self, b):
+        mask = 0x80
+        for _ in range(8):
+            self.GPIO.output(self.sclk,self.GPIO.LOW)
+            if mask&b:
+                self.GPIO.output(self.sid,self.GPIO.HIGH)
+            else:
+                self.GPIO.output(self.sid,self.GPIO.LOW)
+            mask = mask >> 1
+            sleep(0.5)
+            self.GPIO.output(self.sclk,self.GPIO.HIGH)
+            sleep(0.5)
+            self.GPIO.output(self.sclk,self.GPIO.LOW)
+            
+    def bser(self,b,rs=0):
+        self.GPIO.output(self.sclk,self.GPIO.LOW)
+        self.GPIO.output(self.sid,self.GPIO.LOW)
+        self.GPIO.output(self.cs,self.GPIO.HIGH)
+        if rs:
+            bout(0xf8)
+        else:
+            bout(0xfa)
+        bout(b&0xf0)
+        bout((b&0x0f)<<4)
+        self.GPIO.output(self.sid,self.GPIO.LOW)
+        self.GPIO.output(self.cs,self.GPIO.LOW)
+        
+            
     def ledtest(self):
         self.GPIO.output(self.cs,self.GPIO.HIGH)
         sleep(3.e-7)
