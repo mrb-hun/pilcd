@@ -17,7 +17,16 @@ class PiLcd(object):
         self.GPIO.setup(self.sclk,self.GPIO.OUT)
         self.GPIO.setup(self.sid,self.GPIO.OUT)
         
-    
+    def hextest(self, num):
+        mask = 0x80
+        for _ in range(8):
+            if mask&num == 0:
+                print 0,
+            else:
+                print 1,
+            mask = mask >> 1
+        print
+            
     def ledtest(self):
         self.GPIO.output(self.cs,self.GPIO.HIGH)
         sleep(3.e-7)
@@ -33,4 +42,4 @@ class PiLcd(object):
 if __name__ == "__main__":
     lcd = PiLcd()
     for _ in range(10):
-        lcd.ledtest()
+        lcd.hextest(0xfc)
