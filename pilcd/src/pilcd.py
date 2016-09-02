@@ -46,11 +46,11 @@ class PiLcd(object):
         self.GPIO.output(self.sid,self.GPIO.LOW)
         self.GPIO.output(self.cs,self.GPIO.HIGH)
         if rs:
-            bout(0xf8)
+            self.bout(0xf8)
         else:
-            bout(0xfa)
-        bout(b&0xf0)
-        bout((b&0x0f)<<4)
+            self.bout(0xfa)
+        self.bout(b&0xf0)
+        self.bout((b&0x0f)<<4)
         self.GPIO.output(self.sid,self.GPIO.LOW)
         self.GPIO.output(self.cs,self.GPIO.LOW)
         
