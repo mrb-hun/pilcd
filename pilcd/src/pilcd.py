@@ -69,5 +69,4 @@ class PiLcd(object):
  
 if __name__ == "__main__":
     lcd = PiLcd()
-    for _ in range(10):
-        lcd.hextest(0xfc)
+    lcd.bser(0xa5)
